@@ -18,6 +18,8 @@ struct ContentView: View {
                     destination: DetailView(punchline: joke.punchline),
                     label: {
                         HStack {
+                            Image(systemName: "bubble.right")
+                                .foregroundColor(.blue)
                             Text(joke.setup)
                         }
                     })
@@ -27,6 +29,7 @@ struct ContentView: View {
         .onAppear {
             self.networkManager.fetchData()
         }
+        .accentColor(.white)
     }
 }
 
