@@ -25,6 +25,10 @@ struct ContentView: View {
                     })
             }
             .navigationBarTitle("Programming Jokes")
+//            new  in iOS 15!!!
+//            .refreshable {
+//                            print("Do your refresh work here")
+//                        }
         }
         .onAppear {
             self.networkManager.fetchData()
