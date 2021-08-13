@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let punchline: String
     
     var body: some View {
@@ -16,7 +17,7 @@ struct DetailView: View {
             Color(red: 0.20, green: 0.60, blue: 0.86)
                 .ignoresSafeArea(.all)
             VStack{
-                Image("lachen")
+                Image("lachen2")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 350, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -24,13 +25,31 @@ struct DetailView: View {
                     .overlay(
                         Circle().stroke(Color.white, lineWidth: 5)
                     )
-                Divider()
+                Spacer()
                 Text(punchline)
                     .font(.system(size: 30))
                     .bold()
                     .foregroundColor(.white)
                     .padding(.all)
-                Divider()
+                Spacer()
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    HStack{
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.white)
+                        Text("Back")
+                            .font(.system(size: 25))
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            
+                    }
+                    .padding(.horizontal)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                                .stroke(Color.white, lineWidth: 2)
+                    )
+                })
             }
         }
     }
